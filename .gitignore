@@ -1,2 +1,6 @@
+# Environments
 .env
-pub*
+
+# test files
+public*
+output.csv

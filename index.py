@@ -26,7 +26,7 @@ def create_embeddings():
     )
     docs = loader.load()
     vectorstore.add_documents(docs)
-create_embeddings()
+# create_embeddings()
 def search(query):
     embeddings_model = OpenAIEmbeddings()
     vectorstore = PineconeVectorStore(index_name="shortpp", embedding=embeddings_model)
