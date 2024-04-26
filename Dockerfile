@@ -3,5 +3,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-COPY . /app
-EXPOSE 8001
+COPY ./start.sh /start.sh
+RUN chmod +x /start.sh
+COPY ./app /app
+CMD ["./start.sh"]
