@@ -12,6 +12,8 @@ langchain-pinecone = "*"
 fastapi = "*"
 uvicorn = "*"
 pandas = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

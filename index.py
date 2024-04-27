@@ -9,10 +9,8 @@ from langchain_pinecone import PineconeVectorStore
 
 load_dotenv()
 def create_embeddings():
-    # pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
     embeddings_model = OpenAIEmbeddings()
     vectorstore = PineconeVectorStore(index_name="shortpp", embedding=embeddings_model)
-    # loader = CSVLoader(file_path='./public_150k_plus_230930.csv')
     # adding fix of https://github.com/langchain-ai/langchain/pull/20701 to load certain fields
     file = './test.csv'
     file = './public_up_to_150k_12_230930.csv'
@@ -31,5 +29,6 @@ def search(query):
     embeddings_model = OpenAIEmbeddings()
     vectorstore = PineconeVectorStore(index_name="shortpp", embedding=embeddings_model)
     docs = vectorstore.similarity_search(query, k=1)
-    print(docs[0].page_content)
-    return docs[0].page_content
+    print(docs[0].metadata['source'])
+    loan_number = int(docs[0].metadata['source'])
+    return loan_number
